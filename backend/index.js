@@ -1,24 +1,48 @@
 const express = require("express");
-const { interviewerRouter } = require("./routes/interview.routes");
-require("dotenv").config();
-const cors = require("cors");
-const { connection } = require("./db");
+const cors = require("cors")
+const {connection} = require("./db")
+const openAi = require("openai");
+const { interviewRouter } = require("./routes/interviewRouter");
+const { historyRouter } = require("./routes/historyRouter");
+require('dotenv').config();
+
+const app = express();
 
 
-const app = express()
-;
-app.use(cors());
+app.use(cors())
 app.use(express.json());
-app.use("/interview",interviewerRouter);
 
+app.use("/interview", interviewRouter);
+app.use("/history", historyRouter);
 
-app.listen(8080 ,async()=>{
+const openai = new openAi({
+    apiKey: process.env.OPEN_AI_KEY
+});
+
+app.post("/openai", async (req, res) => {
+
+    try {
+      const prompt = req.body.content;
+
+        let response = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo",
+            messages: req.body,
+            max_tokens: 1000
+        });
+      response= await response.json()
+
+        res.status(200).send({role:"assistant",content:response.choices[0].message.content});
+    } catch (error) {
+        res.status(400).send({"error from catch":error});
+    }
+});
+
+ 
+app.listen(8080, async () => {
     try {
         await connection;
-        console.log("Server has been connected in Database")
-        console.log(`Server has been runting at port ${process.env.PORT}`)
-
+        console.log("Server Is Running At PORT 8000")
     } catch (error) {
-        throw new Error(`error`)
+        console.log(error);
     }
-})
+});
