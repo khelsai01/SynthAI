@@ -1,24 +1,11 @@
 import axios from "axios"
-
-let URL="https://tutor-ai-backend.vercel.app";
-
-let UserURL=URL+"/user";
+// let URL = "http://localhost:8080"
+// let URL = "https://synth-ai-backend-7kv6-229sc0vcp-khelsai01.vercel.app/"  //VERCEL
+let URL = "https://synth-ai-backend-7kv6-229sc0vcp-khelsai01.vercel.app"
 
 let InterviewURL=URL+"/interview";
 
 let HistoryURL=URL+"/history";
-
-//User-Request
-
-export const LoginUserRequest=(obj:any)=>{
-  return axios.post(UserURL+"/login",obj);
-}
-
-export const UserRegister=(obj:any)=>{
-   return axios.post(UserURL+'/register',obj)
-}
-
-//Course-Data
 
 export const GetCourseData=()=>{
    return axios.get(InterviewURL+"/data")
@@ -26,9 +13,9 @@ export const GetCourseData=()=>{
 
 export const GetSingleCourseData=(id:any)=>{
    return axios.get(InterviewURL+"/data/"+id)
+
 }
 
-//History
 
 export const AddHistory=(obj:any)=>{
    return axios.post(HistoryURL+"/add",obj)
