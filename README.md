@@ -3,7 +3,7 @@
 ![SynthAI](https://github.com/khelsai01/SynthAI/assets/115932394/360e60d5-3690-437f-a0ab-6c0212295899)
 
 
-##SyntgAI, your virtual interview platform, offers candidates a true-to-life interview experience with personalized feedback. Gain insights through video recordings, downloadable for continuous improvement on your journey to success.
+## SyntgAI, your virtual interview platform, offers candidates a true-to-life interview experience with personalized feedback. Gain insights through video recordings, downloadable for continuous improvement on your journey to success.
 
 Depployed Link https://frontend-3alfe4u75-harsh7739.vercel.app/
 <br>
