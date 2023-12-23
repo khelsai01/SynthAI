@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import Navbar from '../Components/Navbar'
 import { GetCourseData } from '../Utilis/api'
 
 const Courses = () => {
@@ -11,11 +10,10 @@ const Courses = () => {
   useEffect(()=>{
 GetCourseData().then(res=>setData(res.data))
   },[])
-  console.log(data)
+  // console.log(data)
   
   return (
     <>
-    {/* <Navbar /> */}
     <div> <header className="bg-black text-white shadow">
     <div className="mx-auto max-w-7xl px-8 py-3 sm:px-8 lg:px-8">
       <h1 className="text-2xl font-bold tracking-widest">INTERVIEWS</h1>
@@ -30,7 +28,7 @@ GetCourseData().then(res=>setData(res.data))
           <div className='flex  justify-start   items-center'>
 
           <div className='w-[30%]'>
-          <img className='w-[85%]' src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3ts36dsgqnibqq3xd2kc.png" alt="" />
+          <img className='w-[85%]' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgKF9R2OJ3gkrVhWBFydMZCChU32glwpAuPg&usqp=CAU" alt="" />
           </div>
           <div>
             <p className='text-xl '>{el.name}</p>
@@ -52,15 +50,12 @@ GetCourseData().then(res=>setData(res.data))
 
           </div>
           <div >
-            <a href={"/interview/"+el._id} className="inline-flex  justify-center mt-3 border items-center w-[100%] py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-purple-800 hover:bg-purple-900 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+            <a href={"/interview/"+el._id} className="inline-flex  justify-center mt-3 border items-center w-[100%] py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gray-800 hover:bg-purple-900 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
             START INTERVIEW
                 
             </a>
            
         </div>
-          {/* <div>
-         <button className='w-[100%] border bg-purple-500 rounded-[5px] p-[5px] mt-5 hover'>START INTERVIEW</button>
-          </div> */}
         </div>})}
       </div>
     </div>

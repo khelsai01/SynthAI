@@ -1,15 +1,13 @@
 import React, { FormEvent, useEffect, useState, useRef } from 'react'
 import { useReactMediaRecorder } from "react-media-recorder";
 import { AddHistory, GetSingleCourseData, OpenApiChat } from '../Utilis/api'
-
-
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import "../index.css"
-import { useNavigate, useParams } from 'react-router-dom';
-// import { useSelector } from "react-redux"
+import { useParams } from 'react-router-dom';
+
+
+
 const SingleInterviewPage = () => {
-  // const userData = useSelector((data: any) => data.AuthReducer.user);
-const Navigate=useNavigate();
 
   const { id } = useParams();
   let [data, setData] = useState<any>("")
@@ -19,29 +17,10 @@ const Navigate=useNavigate();
   const [mode, setMode] = useState<any>(false)
   const [conversation, setConversation] = useState<any>([])
 
-
-  //TextToSpeech
-  // const [isSpeaking, setIsSpeaking] = useState(false);
-
-
-
-
-
   const handleSpeak = (dat: any) => {
 
     
     const message = new SpeechSynthesisUtterance(dat);
-
-  
-    // const voices = window.speechSynthesis.getVoices();
-
-  
-    // Choose a specific language (e.g., English)
-    //   console.log(data.gender)
-   
-
-   
-
 
     window.speechSynthesis.speak(message);
   
@@ -141,7 +120,6 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
         setConversation((prev: any) => [...prev, res.data])
 
         let obj = {
-          // user_id: userData._id,
           interview_name: data.name,
           interviewee_name: data.interviewee,
           VideoLink: mediaBlobUrl,
@@ -163,13 +141,7 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
 
   }
 
-
- 
   useEffect(() => {
-
-
-    
-    
     GetSingleCourseData(id).then(res => {
       setData(res.data)
 
@@ -177,18 +149,7 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
 
 
       setConversation( a);
-  
-
-       
           handleSpeak(a[1].content);
-        
-     
-
-
-
-
-
-
     }
 
     )
@@ -226,11 +187,11 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
             <h1 className="text-20 font-bold tracking-widest uppercase md:text-2xl">{data?.name} <span className='uppercase'>•    {status == "idle" ? "Ready to record" : status}</span></h1>
           </div>
           <div>
-            {!mode ? <a onClick={StartInterview} className="inline-flex  justify-center  border items-center  py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-purple-800 hover:bg-purple-900 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+            {!mode ? <a onClick={StartInterview} className="inline-flex  justify-center  border items-center  py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gray-800 hover:bg-purple-900 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
               START INTERVIEW
 
             </a> :
-              <a onClick={EndInterview} className="inline-flex  justify-center  border items-center  py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-purple-800 hover:bg-purple-900 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+              <a onClick={EndInterview} className="inline-flex  justify-center  border items-center  py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gray-800 hover:bg-purple-900 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                 END INTERVIEW
 
               </a>}
@@ -248,8 +209,8 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
 
 
   
-              <div className=' my-2  border rounded-[10px] p-[20px]  bg-gray-900 border-gray-300 w-full  md:w-[100%] '>
-  <img className='rounded-[50%] m-auto w-[50%] md:w-[30%]' src="https://static.vecteezy.com/system/resources/previews/010/054/157/original/chat-bot-robot-avatar-in-circle-round-shape-isolated-on-white-background-stock-illustration-ai-technology-futuristic-helper-communication-conversation-concept-in-flat-style-vector.jpg" alt="" />
+              <div className=' my-2  border rounded-[10px] p-[20px]  bg-gray-400 border-gray-300 w-full  md:w-[100%] '>
+  <img className='rounded-[50%] m-auto w-[50%] md:w-[30%]' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmJ5WXSil0Qt-aRXeQy8TS6E7ftLnfNlkRl6gGo9zy87LqSVA0oDYhxPvJTg&s" alt="" />
 </div>
 <div className='  my-2   border rounded-[10px]   bg-gray-900 border-gray-300 w-full md:w-[100%]'>
 <div>
@@ -260,19 +221,6 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
                   autoPlay
                   muted
               />
-          
-         {/* { mediaBlobUrl && (
-              <div>
-                  <p>Recorded Video:</p>
-                  <video
-                      src={mediaBlobUrl}
-                      controls
-                      autoPlay
-                      loop
-                  />
-              </div>
-          )}  */}
-    
       </div>
      
 </div>
@@ -282,7 +230,7 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
 
             <div className='w-full mx-auto md:ml-[5px]   '>
 
-            <div className='w-full h-[80vh] flex flex-col justify-between my-2 border rounded-[10px] p-[20px] md:h-[81vh] bg-gray-900 border-gray-300'>
+            <div className='w-full h-[80vh] flex flex-col justify-between my-2 border rounded-[10px] p-[20px] md:h-[81vh] bg-gray-400 border-gray-300'>
                 <div className='overflow-auto example' >
                   {conversation.length > 1 &&
 
@@ -292,43 +240,20 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
                           <img alt="Tailwind CSS chat bubble component" src={data.interviewerImage} />
                         </div>
                       </div>
-                      <div className="chat-header">
+                      <div className="chat-header" >
                         {data.interviewee}
-                        {/* <time className="text-xs opacity-50">12:45</time> */}
                       </div>
                       <div className="chat-bubble">{el.content}
-                        {/* <Typewriter
-  onInit={(typewriter) => {
-    typewriter.typeString(el.content)
-    .changeDelay(1)
-      .start();
-      
-      
-  }}
-/> */}
-                        {/* <Typewriter
-  options={{
-    strings:[el.content],
-    autoStart: true,
-    loop: false, 
-    delay: 50,
-    
-  }}
-/> */}
+  
                       </div>
-                      {/* <div className="chat-footer opacity-50">
-    Delivered
-  </div> */}
+   
                     </div></> :
                       <><div className="chat chat-end">
                         <div className="chat-image avatar">
                           <div className="w-10 rounded-full">
-                            {/* <img alt="Tailwind CSS chat bubble component" src={userData.avatar} /> */}
                           </div>
                         </div>
                         <div className="chat-header">
-                          {/* {userData.name} */}
-                          {/* <time className="text-xs opacity-50">12:46</time> */}
                         </div>
                         <div className="chat-bubble">{el.content}</div>
                         <div className="chat-footer opacity-50">
@@ -343,7 +268,6 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
                     </div>
                     <div className="chat-header">
                       {data.interviewee}
-                      {/* <time className="text-xs opacity-50">12:45</time> */}
                     </div>
                     <div className="chat-bubble"><span className="loading loading-dots loading-md"></span></div>
                     <div className="chat-footer opacity-50">
@@ -363,11 +287,6 @@ alert("Your Interview Has Ended... Please Wait For Some Time To Get FeedBack On 
                       <button onClick={SpeechRecognition.stopListening} className=" w-[53px] mr-3 inline-flex justify-center p-3 border text-blue-600 rounded-full cursor-pointer hover:bg-black dark:text-blue-500 dark:hover:bg-gray-600">
                         <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zhxr7ttbfoza4jhsw8mi.png" alt="" />
                       </button> : <button onClick={startListen} disabled={mode ? false : true} className=" w-[53px] mr-3 inline-flex justify-center p-3 border text-blue-600 rounded-full cursor-pointer hover:bg-black dark:text-blue-500 dark:hover:bg-gray-600"><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gt7ew3aheyrpwxxz0cj5.png" alt="" /></button>}
-
-                    {/* <button onClick={startListen}>Start</button>
-            <button onClick={SpeechRecognition.stopListening}>Stop</button>
-            <button onClick={resetTranscript}>Reset</button>
-            <p>{transcript}</p> */}
 
                     <button type="submit" onClick={HandleSubmit} disabled={mode ? false : true} className="inline-flex justify-center p-3 border text-blue-600 rounded-full cursor-pointer hover:bg-black dark:text-blue-500 dark:hover:bg-gray-600">
                       <svg className="w-5 h-5 rotate-90 rtl:-rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 18 20">
