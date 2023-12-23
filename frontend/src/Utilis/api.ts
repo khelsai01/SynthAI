@@ -1,7 +1,5 @@
 import axios from "axios"
-// let URL = "http://localhost:8080"
-// let URL = "https://synth-ai-backend-7kv6-229sc0vcp-khelsai01.vercel.app/"  //VERCEL
-let URL = "https://synth-ai-backend-7kv6-229sc0vcp-khelsai01.vercel.app"
+let URL = "https://weak-rose-foal-coat.cyclic.app"
 
 let InterviewURL=URL+"/interview";
 
