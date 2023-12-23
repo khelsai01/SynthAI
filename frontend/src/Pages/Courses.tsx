@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { GetCourseData } from '../Utilis/api'
+import SynthAI from "../SynthLogo/SynthAI.png"
 
 const Courses = () => {
 
@@ -15,7 +16,15 @@ GetCourseData().then(res=>setData(res.data))
   return (
     <>
     <div> <header className="bg-black text-white shadow">
-    <div className="mx-auto max-w-7xl px-8 py-3 sm:px-8 lg:px-8">
+      {/* <div>
+        <img className="h-20 my-auto" src={SynthAI} alt="" />
+      </div> */}
+    {/* <div className="mx-auto max-w-7xl px-8 py-3 sm:px-8 lg:px-8">
+    <img className="h-20 tracking-widest" src={SynthAI} alt="" />
+      <h1 className="text-2xl font-bold tracking-widest">INTERVIEWS</h1>
+    </div> */}
+    <div style={{display:"flex", justifyContent:"space-between", margin:"20px",alignItems:"center"}}>
+    <img style={{height:"70px"}} src={SynthAI} alt="" />
       <h1 className="text-2xl font-bold tracking-widest">INTERVIEWS</h1>
     </div>
   </header>
