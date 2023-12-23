@@ -36,8 +36,6 @@ app.post("/openai", async (req, res) => {
         res.status(400).send({"error from catch":error});
     }
 });
-
- 
 app.listen(8080, async () => {
     try {
         await connection;
