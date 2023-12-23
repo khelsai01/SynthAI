@@ -5,7 +5,8 @@
 /.pnp
 .pnp.js
 package-lock.json
-
+db.json
+Dashboard.tsx
 
 # testing
 /coverage

@@ -1,13 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ApiComponent from './component/apiComponent';
+import HomePage from './Pages/HomePage';
+import MainRoutes from './Routes/MainRoutes';
 
 function App() {
-  console.log("synthAI")
   return (
     <div className="App">
-      <ApiComponent />
+      {/* <HomePage /> */}
+      <MainRoutes />
     </div>
   );
 }
