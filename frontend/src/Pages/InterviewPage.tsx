@@ -81,5 +81,6 @@ GetSingleHistoryData(id).then(res=>{
   </div>
   )
 }
+// ended
 
 export default ReportPage
